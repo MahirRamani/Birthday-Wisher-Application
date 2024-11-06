@@ -62,16 +62,44 @@
 
 
 
+// Basic Final
+// import { Stack } from 'expo-router';
+// import { useColorScheme } from 'react-native';
+
+// export default function RootLayout() {
+//   const colorScheme = useColorScheme();
+
+//   return (
+//     <Stack>
+//       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+//     </Stack>
+//   );
+// }
+
+
 
 import { Stack } from 'expo-router';
 import { useColorScheme } from 'react-native';
+import Colors from '../constants/Colors';
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
 
   return (
     <Stack>
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen
+        name="(tabs)"
+        options={{
+          headerStyle: {
+            backgroundColor: Colors[colorScheme ?? 'light'].background,
+          },
+          headerTintColor: Colors[colorScheme ?? 'light'].text,
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+          headerTitle: "B'DAY WISHER",
+        }}
+      />
     </Stack>
   );
 }

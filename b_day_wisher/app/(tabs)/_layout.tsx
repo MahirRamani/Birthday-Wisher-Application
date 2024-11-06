@@ -72,7 +72,7 @@
 
 
 
-
+// Basic Final
 import { Tabs } from 'expo-router';
 import { useColorScheme } from 'react-native';
 import Colors from '../../constants/Colors';
@@ -90,21 +90,65 @@ export default function TabLayout() {
           backgroundColor: Colors[colorScheme ?? 'light'].background,
           borderTopColor: Colors[colorScheme ?? 'light'].border,
         },
+        headerShown: false,
       }}>
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color, size }) => <MaterialIcons name="home" color={color} size={size} />,
+          title: 'Birthdays',
+          tabBarIcon: ({ color, size }) => <MaterialIcons name="cake" color={color} size={size} />,
         }}
       />
       <Tabs.Screen
         name="explore"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color, size }) => <MaterialIcons name="search" color={color} size={size} />,
+          title: 'Calendar',
+          tabBarIcon: ({ color, size }) => <MaterialIcons name="calendar-today" color={color} size={size} />,
         }}
       />
     </Tabs>
   );
 }
+
+
+
+
+
+// import { Tabs } from 'expo-router';
+// import { useColorScheme } from 'react-native';
+// import Colors from '../../constants/Colors';
+// import { MaterialIcons } from '@expo/vector-icons';
+
+// export default function TabLayout() {
+//   const colorScheme = useColorScheme();
+
+//   return (
+//     <Tabs
+//       screenOptions={{
+//         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+//         tabBarInactiveTintColor: Colors[colorScheme ?? 'light'].tabIconDefault,
+//         tabBarStyle: {
+//           backgroundColor: Colors[colorScheme ?? 'light'].background,
+//           borderTopColor: Colors[colorScheme ?? 'light'].border,
+//         },
+//         headerShown: false, // Hide the default header
+//       }}>
+//       <Tabs.Screen
+//         name="index"
+//         options={{
+//           title: 'Birthdays',
+//           tabBarLabel: () => null, // Remove the tab label
+//           tabBarIcon: ({ color, size }) => <MaterialIcons name="cake" size={size} color={color} />,
+//         }}
+//       />
+//       <Tabs.Screen
+//         name="explore"
+//         options={{
+//           title: 'Calendar',
+//           tabBarLabel: () => null, // Remove the tab label
+//           tabBarIcon: ({ color, size }) => <MaterialIcons name="calendar-today" size={size} color={color} />,
+//         }}
+//       />
+//     </Tabs>
+//   );
+// }

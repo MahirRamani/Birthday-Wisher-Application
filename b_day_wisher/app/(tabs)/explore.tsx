@@ -518,6 +518,7 @@
 
 
 
+// Basic Final
 import React, { useState } from 'react';
 import { StyleSheet, View, FlatList, Text, TouchableOpacity } from 'react-native';
 import { Card, CardContent, CardHeader, CardTitle } from '../../components/CustomComponents';
@@ -525,11 +526,11 @@ import ProfileTile from '../../components/ProfileTile';
 import { fetchBirthdaysByDate } from '../../hooks/useBirthdayData';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { MaterialIcons } from '@expo/vector-icons';
-import { Birthday } from './index';
+import { Student } from './index';
 
 export default function ExploreScreen() {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-  const [birthdays, setBirthdays] = useState<Birthday[]>([]);
+  const [birthdays, setBirthdays] = useState<Student[]>([]);
   const [showDatePicker, setShowDatePicker] = useState(false);
 
   const handleDateSelect = async (event: any, date?: Date) => {
@@ -562,15 +563,15 @@ export default function ExploreScreen() {
         </CardContent>
       </Card>
       <Card style={styles.fullWidthCard}>
-        <CardHeader style={styles.centered}>
+        <CardHeader >
           <CardTitle>{selectedDate ? `${formattedDate}'s Birthdays` : 'Birthdays on Selected Date'}</CardTitle>
         </CardHeader>
-        <CardContent style={styles.centered}>
+        <CardContent >
           <FlatList
             contentContainerStyle={styles.flatListContainer}
             data={birthdays}
-            renderItem={({ item, index }) => <ProfileTile birthday={item} index={index} style={styles.profileTile} />}
-            keyExtractor={(item) => item.id}
+            renderItem={({ item, index }) => <ProfileTile student={item} index={index} />}
+            keyExtractor={(item) => item.rollNo}
             ListEmptyComponent={
               <Text style={styles.emptyText}>
                 {selectedDate ? 'No birthdays for selected date' : 'Please select a date'}
@@ -594,7 +595,7 @@ export default function ExploreScreen() {
 const styles = StyleSheet.create({
   flatListContainer: {
     paddingHorizontal: 0, // Remove padding if necessary
-    alignItems: 'center', // Center items in the FlatList if needed
+    // alignItems: 'center', // Center items in the FlatList if needed
   },
   container: {
     flex: 1,
